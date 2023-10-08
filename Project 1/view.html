@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Results</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const resultTableBody = document.getElementById("resultTableBody");
+    
+            // Retrieve and display stored results
+            const results = JSON.parse(localStorage.getItem("results")) || [];
+            results.forEach((result) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${result.studentName}</td>
+                    <td>${result.subject}</td>
+                    <td>${result.score}</td>
+                `;
+                resultTableBody.appendChild(row);
+            });
+        });
+    </script>    
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Subject</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody id="resultTableBody">
+        </tbody>
+    </table>
+    
+</body>
+</html>
